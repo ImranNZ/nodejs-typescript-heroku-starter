@@ -2,7 +2,7 @@
 
 [![Dependency Status](https://david-dm.org/Microsoft/TypeScript-Node-Starter.svg)](https://david-dm.org/Microsoft/TypeScript-Node-Starter) [![Build Status](https://travis-ci.org/Microsoft/TypeScript-Node-Starter.svg?branch=master)](https://travis-ci.org/Microsoft/TypeScript-Node-Starter) 
 
-**Live Demo**: [https://typescript-node-starter.azurewebsites.net/](https://typescript-node-starter.azurewebsites.net/)
+**Live Demo**: [https://sheltered-reaches-28725.herokuapp.com/](https://sheltered-reaches-28725.herokuapp.com/)
 
 ![image](https://user-images.githubusercontent.com/820883/36764267-abbdb7f8-1be0-11e8-9678-2a9ea448d7f8.png)
 
@@ -15,6 +15,7 @@ To build and run this app locally you will need a few things:
 - Install [Node.js](https://nodejs.org/en/)
 - Install [MongoDB](https://docs.mongodb.com/manual/installation/)
 - Install [VS Code](https://code.visualstudio.com/)
+- Install [Heroku CLI] (https://devcenter.heroku.com/articles/heroku-cli)
 
 # Getting started
 - Clone the repository
@@ -83,63 +84,8 @@ After rebuilding/serving, the app should work, but users that were previously cr
 Don't forget to return the `MONGO_URI_LOCAL` to your local test database (if you so desire).
 
 
-## Deploying to Azure App Service
-Deploying from VS Code can be broken into the following steps:
-1. Authenticate your Azure account in VS Code
-2. Build your app
-3. Zip deploy using the Azure App Service extension
-
-### Sign in to your Azure account
-1. Open VS Code
-2. Expand the Azure App Service menu in the explorer menu
-    - If you don't see this, you might not have the `Azure App Service` extension installed.
-    See the pre-reqs section.
-3. Click `Sign in to Azure...`
-4. Choose `Copy & Open` from the resulting dialog
-    - This will open `aka.ms/devicelogin` in a browser window.
-    If it doesn't, just navigate there manually.
-5. Paste in the code that is on your clipboard.
-6. Go back to VS Code, you should now be signed in.
-You can confirm that everything worked by seeing your Azure subscription listed in the Azure App Service section of the explorer window.
-Additionally you should see the email associated with your account listed in the status bar at the bottom of VS Code. 
-
-### Build the app
-Building the app locally is required for before a zip deploy because the App Service won't execute build tasks. 
-Build the app however you normally would:
-- `ctrl + shift + b` - kicks off default build in VS Code
-- execute `npm run build` from a terminal window
-
-### Zip deploy from VS Code
-1. Make sure your app is built, whatever is currently in your `dist` and `node_modules` folders will be the app that is deployed.
-2. Click the blue up arrow (Deploy to Web App) on the Azure App Service section of the explorer window.
-3. Choose the entire project directory.
-If you haven't changed the name, this will be `TypeScript-Node-Starter`.
-4. Choose the subscription you want this app to be billed to (don't worry, it will be free).
-5. Choose `Create New Web App`
-6. Enter a globally unique name -
-This will be part of the URL that azure generates so it has to be unique, but if you're planning on adding a custom domain later, it's not that important. I usually just add random numbers to the end of the app name, ie. typescript-node-starter-15121214.
-7. Choose a resource group - 
-If you don't know what this is, just create a new one. 
-If you have lots of cloud resources that should be logically grouped together (think an app service and a database that supports that app) then you would want to put them in the same resource group. 
-This can always be updated later though.
-If you create a new resource group, you'll also be prompted to pick a location for that group.
-Pick something geographically close to where your users are.
-8. Choose `Create new App Service Plan` -
-An app service plan mainly is what determines the size and cost of the hardware your app will run on, but it also manages some other settings which we can ignore for now.
-9. Choose `B1 - Basic` - This one is free.
-If you know what you're doing, feel free to select a stronger pricing tier.
-10. Choose your target node runtime version - We are deploying to Linux machines, and in addition we can choose the exact node runtime we want.
-If you don't know what you want, choose whatever the current LTS build is.
-11. Grab a cup of coffee - You'll see everything you just selected getting created in the output window.
-All of this is powered by the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) and can be easily replicated if you decide you want to customize this process.
-This deployment is not the fastest option (but it is the easiest!). We are literally bundling everything in your project (including the massive node_modules folder) and uploading it to our Azure app service. Times will vary, but as a baseline, my deployment took roughly 6 minutes.
-12. Add `NODE_ENV` environment variable - In the App Service section of the explorer window, expand the newly created service, right click on **Application Settings**, select **Add New Settings...**, and add `NODE_ENV` as the key and `production` as the value.
-This setting determines which database to point to. 
-If you haven't created a cloud database yet, see [the setup instructions](#mlab).
-13. Profit! If everything worked you should see a page that looks like this: [TypeScript Node Starter Demo Site](https://typescript-node-starter.azurewebsites.net/)
-
-### Troubleshooting failed deployments
-Deployment can fail for various reasons, if you get stuck with a page that says *Service Unavailable* or some other error, [open an issue](https://github.com/Microsoft/TypeScript-Node-Starter/issues/new) and I'll try to help you resolve the problems.
+## Deploying to Heroku
+Deploying to Heroku can be done by following the documentation here: https://devcenter.heroku.com/articles/git
 
 # TypeScript + Node 
 In the next few sections I will call out everything that changes when adding TypeScript to an Express project.
