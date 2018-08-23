@@ -15,7 +15,7 @@ To build and run this app locally you will need a few things:
 - Install [Node.js](https://nodejs.org/en/)
 - Install [MongoDB](https://docs.mongodb.com/manual/installation/)
 - Install [VS Code](https://code.visualstudio.com/)
-- Install [Heroku CLI] (https://devcenter.heroku.com/articles/heroku-cli)
+- Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
 # Getting started
 - Clone the repository
@@ -55,10 +55,7 @@ There are many ways to deploy an Node app, and in general, nothing about the dep
 In this section, I'll walk you through how to deploy this app to Azure App Service using the extensions available in VS Code because I think it is the easiest and fastest way to get started, as well as the most friendly workflow from a developer's perspective.
 
 ## Pre-reqs
-- [**Azure account**](https://azure.microsoft.com/en-us/free/) - If you don't have one, you can sign up for free.
-The Azure free tier gives you plenty of resources to play around with including up to 10 App Service instances, which is what we will be using.
-- [**VS Code**](https://code.visualstudio.com/) - We'll be using the interface provided by VS Code to quickly deploy our app.
-- [**Azure App Service VS Code extension**](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) - In VS Code, search for `Azure App Service` in the extension marketplace (5th button down on the far left menu bar), install the extension, and then reload VS Code.
+- [**Heroku account**](https://devcenter.heroku.com/start) - If you don't have one, you can sign up for free.
 - **Create a cloud database** - 
 For local development, running MongoDB on localhost is fine, however once we deploy we need a database with high availability.
 The easiest way to achieve this is by using a managed cloud database.
